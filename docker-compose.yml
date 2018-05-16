@@ -6,5 +6,9 @@ services:
       - .:/ng-drug-library
     ports:
       - "4200:4200"
+    networks:
+      - bear-rx-norm
+networks:
+  bear-rx-norm:
     
 
