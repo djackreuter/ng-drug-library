@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
+
+import { DrugService } from './services/drug/drug.service';
 
 
 @NgModule({
@@ -10,9 +12,12 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    DrugService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
