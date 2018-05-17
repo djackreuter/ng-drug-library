@@ -1,9 +1,26 @@
-<div class="row justify-content-center">
-  <div class="col-lg-8">
-    <form>
+<div class="row justify-content-center mt-3">
+  <div class="row">
+    <h3>Search Drugs</h3>
+  </div>
+</div>
+
+<div class="row justify-content-center mt-1">
+  <div class="col-lg-6">
+    <form (ngSubmit)="onSearch()">
       <div class="form-group">
-        <input >
+        <input class="form-control" [(ngModel)]="searchQuery" name="searchQuery" type="text" placeholder="Drug name...">
+        <button type="submit" class="btn btn-success">Search</button>
       </div>
     </form>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-8">
+    <div *ngIf="results">
+      <ul>
+        <li *ngFor="let result of results">{{result.proprietary_name}}</li>
+      </ul>
+    </div>
   </div>
 </div>
