@@ -23,7 +23,9 @@
   <div class="col-lg-8">
     <div *ngIf="results">
       <ul>
-        <li *ngFor="let result of results">
+        <li *ngFor="let result of results" 
+            [class.selected]="result === selectedDrug"
+            (click)="selectDrug(result)">
           <a href="#" (click)="openModal(template)">
             {{result.proprietary_name}} | 
             {{result.substance_name}}
@@ -38,5 +40,5 @@
 </div>
 
 <ng-template #template>
-  
+  <app-drug-details [drug]="selectedDrug"></app-drug-details>
 </ng-template>
