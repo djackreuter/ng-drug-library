@@ -24,8 +24,10 @@
     <div *ngIf="results">
       <ul>
         <li *ngFor="let result of results">
-          {{result.proprietary_name}} | 
-          {{result.substance_name}} 
+          <a href="#" (click)="openModal(template)">
+            {{result.proprietary_name}} | 
+            {{result.substance_name}}
+          </a>
           <strong>Dosage: </strong>
           {{result.active_numerator_strength}}
           {{result.active_ingred_unit}}
@@ -34,3 +36,7 @@
     </div>
   </div>
 </div>
+
+<ng-template #template>
+  
+</ng-template>
