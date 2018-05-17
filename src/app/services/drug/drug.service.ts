@@ -9,7 +9,7 @@ export class DrugService {
 
   drugUrl = 'http://localhost:3000/drugs/query?search=';
 
-  getDrugs(searchQuery): Observable<object> {
+  searchDrugs(searchQuery): Observable<object> {
     return this.http.get(this.drugUrl + searchQuery);
   }
 
