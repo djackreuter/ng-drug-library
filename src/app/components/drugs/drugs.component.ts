@@ -13,6 +13,7 @@ export class DrugsComponent implements OnInit {
   searchQuery: string;
   results: object;
   modalRef: BsModalRef;
+  selectedDrug: object;
 
   constructor(private drugService: DrugService,
               private modalService: BsModalService) { }
@@ -32,6 +33,10 @@ export class DrugsComponent implements OnInit {
 
   openModal(template: TemplateRef<any>): void {
     this.modalRef = this.modalService.show(template);
+  }
+
+  selectDrug(result: object): void {
+    this.selectedDrug = result;
   }
 
 }
