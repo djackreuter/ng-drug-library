@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { DrugService } from './services/drug/drug.service';
 import { DrugsComponent } from './components/drugs/drugs.component';
 import { DrugDetailsComponent } from './components/drug-details/drug-details.component';
+import { AppRoutingModule } from './/app-routing.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { DrugDetailsComponent } from './components/drug-details/drug-details.com
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    AppRoutingModule
   ],
   providers: [
     DrugService
