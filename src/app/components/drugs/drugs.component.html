@@ -23,23 +23,13 @@
   <div class="col-lg-8">
     <div *ngIf="results">
       <ul>
-        <li *ngFor="let result of results" 
-            [class.selected]="result === selectedDrug"
-            (click)="selectDrug(result)">
-          <a href="#" (click)="openModal(template)">
-            {{result.proprietary_name}} | 
-            {{result.substance_name}}
+        <li *ngFor="let result of results">
+          <a routerLink="/drugs/{{result.proprietary_name}}">
+            {{result.proprietary_name}} 
+            {{result.non_proprietary_name}}
           </a>
-          <strong>Dosage: </strong>
-          {{result.active_numerator_strength}}
-          {{result.active_ingred_unit}}
         </li>
       </ul>
     </div>
   </div>
 </div>
-
-<ng-template #template>
-  <app-drug-details [drug]="selectedDrug" 
-  [closeModal]="modalRef"></app-drug-details>
-</ng-template>
