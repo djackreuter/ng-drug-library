@@ -11,8 +11,6 @@ import { DrugService } from '../../services/drug/drug.service';
 })
 export class DrugDetailsComponent implements OnInit {
 
-  // @Input() closeModal: any;
-  // @Input() drug: object;
   drugs: object;
 
   constructor(private route: ActivatedRoute,
@@ -23,15 +21,15 @@ export class DrugDetailsComponent implements OnInit {
     this.getDrug();
   }
 
-  // modalClose(): void {
-  //   this.closeModal.hide()
-  // }
-
   getDrug(): void {
     const name = this.route.snapshot.paramMap.get('name');
     this.drugService.getDrug(name).subscribe((res) => {
       this.drugs = res;
     });
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

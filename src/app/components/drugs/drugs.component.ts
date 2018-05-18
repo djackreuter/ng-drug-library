@@ -1,7 +1,5 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DrugService } from '../../services/drug/drug.service';
-import { BsModalService } from 'ngx-bootstrap/modal';
-import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-drugs',
@@ -12,11 +10,8 @@ export class DrugsComponent implements OnInit {
 
   searchQuery: string;
   results: object;
-  modalRef: BsModalRef;
-  selectedDrug: object;
 
-  constructor(private drugService: DrugService,
-              private modalService: BsModalService) { }
+  constructor(private drugService: DrugService) { }
 
   ngOnInit() {
   }
@@ -29,14 +24,6 @@ export class DrugsComponent implements OnInit {
 
   onSearch(): void {
     this.getDrugs();
-  }
-
-  openModal(template: TemplateRef<any>): void {
-    this.modalRef = this.modalService.show(template);
-  }
-
-  selectDrug(result: object): void {
-    this.selectedDrug = result;
   }
 
 }
