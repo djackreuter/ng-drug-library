@@ -10,7 +10,8 @@
     <div class="form-group">
       <label for="exampleFormControlSelect1">Strength</label>
       <select class="form-control">
-        <option *ngFor="let drug of drugs">{{drug.active_numerator_strength}}{{drug.active_ingred_unit}}</option>
+        <option *ngFor="let drug of drugs">{{drug.active_numerator_strength}}
+          {{drug.active_ingred_unit}}</option>
       </select>
     </div>
     <button type="submit" class="btn btn-primary">Prescribe</button>
