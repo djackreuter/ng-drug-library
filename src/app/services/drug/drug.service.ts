@@ -8,9 +8,14 @@ export class DrugService {
   constructor(private http: HttpClient) { }
 
   drugUrl = 'http://localhost:3000/drugs/query?search=';
+  drugInfoUrl = 'http://localhost:3000/drugs/specific_drug?search=';
 
-  searchDrugs(searchQuery): Observable<object> {
+  searchDrugs(searchQuery: string): Observable<object> {
     return this.http.get(this.drugUrl + searchQuery);
+  }
+
+  getDrug(name: string): Observable<object> {
+    return this.http.get(this.drugInfoUrl + name);
   }
 
 }
