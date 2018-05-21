@@ -12,6 +12,8 @@ import { DrugService } from '../../services/drug/drug.service';
 export class DrugDetailsComponent implements OnInit {
 
   drugs: object;
+  selectedDoseForm: string;
+  dosageStrength: object;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -25,6 +27,15 @@ export class DrugDetailsComponent implements OnInit {
     const name = this.route.snapshot.paramMap.get('name');
     this.drugService.getDrug(name).subscribe((res) => {
       this.drugs = res;
+    });
+  }
+
+  selectDoseForm(selectedDoseForm: string): void {
+    this.selectedDoseForm = selectedDoseForm;
+    const selectedDrug = this.route.snapshot.paramMap.get('name');
+    this.drugService.getDosage(selectedDrug, this.selectedDoseForm).subscribe((res) => {
+      this.dosageStrength = res;
+      console.log(this.dosageStrength);
     });
   }
 

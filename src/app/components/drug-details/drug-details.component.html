@@ -3,7 +3,8 @@
     <div class="form-group">
       <label for="exampleFormControlSelect1">Dosage Form</label>
       <select class="form-control">
-        <option *ngFor="let drug of drugs">{{drug.dosage_form_name}}</option>
+        <option *ngFor="let drug of drugs" value="{{drug.dosage_form_name}}" (click)="selectDoseForm(drug, drug.dosage_form_name)">
+          {{drug.dosage_form_name}}</option>
       </select>
     </div>
 
