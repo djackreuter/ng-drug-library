@@ -18,8 +18,8 @@ export class DrugService {
     return this.http.get(this.drugInfoUrl + name);
   }
 
-  getDosage(drug: string, strength: string): Observable<object> {
-    return this.http.get(`http://localhost:3000/drugs/strength?search=${drug}&strength=${strength}`);
+  getDosage(drug: string, doseForm: string): Observable<object> {
+    return this.http.get(`http://localhost:3000/drugs/strength?search=${drug}&dose_form=${doseForm}`);
   }
 
 }
