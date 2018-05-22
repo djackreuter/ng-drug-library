@@ -35,6 +35,7 @@ export class DrugDetailsComponent implements OnInit {
     const selectedDrug = this.route.snapshot.paramMap.get('name');
     this.selectedDoseForm = doseFormName;
     this.drugService.getDosage(selectedDrug, this.selectedDoseForm).subscribe((res) => {
+      this.strengths = [];
       this.dosageStrength = res;
       for(let i = 0; i < this.dosageStrength.length; i++) {
         this.strengths.push(this.dosageStrength[i].join(' '));
