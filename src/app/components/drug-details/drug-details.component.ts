@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DrugService } from '../../services/drug/drug.service';
+import { NdcProduct } from '../../classes/NdcProduct';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { DrugService } from '../../services/drug/drug.service';
 export class DrugDetailsComponent implements OnInit {
 
   drugName: string = this.route.snapshot.paramMap.get('name');
-  drugs: object;
+  drugs: NdcProduct;
   selectedDoseForm: string;
   dosageStrength: any;
   strengths: string[] = [];

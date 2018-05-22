@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DrugService } from '../../services/drug/drug.service';
+import { NdcProduct } from '../../classes/NdcProduct';
 
 @Component({
   selector: 'app-drugs',
@@ -9,7 +10,7 @@ import { DrugService } from '../../services/drug/drug.service';
 export class DrugsComponent implements OnInit {
 
   searchQuery: string;
-  results: object;
+  drugs: NdcProduct[];
 
   constructor(private drugService: DrugService) { }
 
@@ -18,7 +19,7 @@ export class DrugsComponent implements OnInit {
 
   getDrugs(): void {
     this.drugService.searchDrugs(this.searchQuery).subscribe((res) => {
-      this.results = res;
+      this.drugs = res;
     });
   }
 

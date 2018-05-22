@@ -21,12 +21,12 @@
 
 <div class="row">
   <div class="col-lg-8">
-    <div *ngIf="results">
+    <div *ngIf="drugs">
       <ul>
-        <li *ngFor="let result of results">
-          <a routerLink="/drugs/{{result.proprietary_name}}">
-            {{result.proprietary_name}} 
-            {{result.non_proprietary_name}}
+        <li *ngFor="let drug of drugs">
+          <a routerLink="/drugs/{{drug.proprietary_name}}">
+            {{drug.proprietary_name}} 
+            {{drug.non_proprietary_name}}
           </a>
         </li>
       </ul>
