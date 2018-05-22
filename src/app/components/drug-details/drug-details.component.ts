@@ -13,7 +13,8 @@ export class DrugDetailsComponent implements OnInit {
 
   drugs: object;
   selectedDoseForm: string;
-  dosageStrength: object;
+  dosageStrength: any;
+  strengths: string[] = [];
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -30,12 +31,14 @@ export class DrugDetailsComponent implements OnInit {
     });
   }
 
-  selectDoseForm(selectedDoseForm: string): void {
-    this.selectedDoseForm = selectedDoseForm;
+  selectDoseForm(doseFormName: string): void {
     const selectedDrug = this.route.snapshot.paramMap.get('name');
+    this.selectedDoseForm = doseFormName;
     this.drugService.getDosage(selectedDrug, this.selectedDoseForm).subscribe((res) => {
       this.dosageStrength = res;
-      console.log(this.dosageStrength);
+      for(let i = 0; i < this.dosageStrength.length; i++) {
+        this.strengths.push(this.dosageStrength[i].join(' '));
+      }
     });
   }
 
