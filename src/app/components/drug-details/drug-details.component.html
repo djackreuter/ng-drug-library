@@ -3,19 +3,25 @@
     <div class="form-group">
       <label for="exampleFormControlSelect1">Dosage Form</label>
       <select class="form-control">
-        <option *ngFor="let drug of drugs" value="{{drug.dosage_form_name}}" (click)="selectDoseForm(drug, drug.dosage_form_name)">
-          {{drug.dosage_form_name}}</option>
+        <option value="" selected disabled></option>
+        <option *ngFor="let drug of drugs" 
+                (click)="selectDoseForm(drug.dosage_form_name)">
+          {{drug.dosage_form_name}}
+        </option>
       </select>
     </div>
 
-    <div class="form-group">
-      <label for="exampleFormControlSelect1">Strength</label>
-      <select class="form-control">
-        <option *ngFor="let drug of drugs">{{drug.active_numerator_strength}}
-          {{drug.active_ingred_unit}}</option>
-      </select>
+    <div *ngIf="strengths.length > 0">
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Strength</label>
+        <select class="form-control">
+          <option *ngFor="let strength of strengths">
+            {{strength}}
+          </option>
+        </select>
+      </div>
     </div>
-    <button type="submit" class="btn btn-primary">Prescribe</button>
+    <button *ngIf="strengths.length > 0" type="submit" class="btn btn-primary">Prescribe</button>
     <button (click)="goBack()" class="btn btn-secondary">Back</button>
   </form>
 </div>
