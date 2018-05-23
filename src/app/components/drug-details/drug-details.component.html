@@ -1,9 +1,9 @@
 <div class="card card-style mt-4 p-3">
   <h3>{{drugName}}</h3>
-  <form>
+  <form [formGroup]="prescriptionForm">
     <div class="form-group">
       <label for="exampleFormControlSelect1">Dosage Form</label>
-      <select class="form-control">
+      <select class="form-control" formControlName="drug">
         <option value="" selected disabled></option>
         <option *ngFor="let drug of drugs" 
                 (click)="selectDoseForm(drug.dosage_form_name)">
@@ -15,13 +15,78 @@
     <div *ngIf="strengths.length > 0">
       <div class="form-group">
         <label for="exampleFormControlSelect1">Strength</label>
-        <select class="form-control">
-          <option *ngFor="let strength of strengths">
+        <select class="form-control" formControlName="strength">
+          <option *ngFor="let strength of strengths" [value]="strength">
             {{strength}}
           </option>
         </select>
       </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Quantity To Take</label>
+        <select class="form-control" formControlName="quantityToTake">
+          <option *ngFor="let quantity of quantityToTake" 
+          [value]="quantity">
+            {{quantity}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Frequency</label>
+        <select class="form-control" formControlName="frequency">
+          <option *ngFor="let freq of frequency" 
+          [value]="freq">
+          {{freq}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Time Of Day</label>
+        <select class="form-control" formControlName="time">
+          <option *ngFor="let time of timeOfDay" 
+          [value]="time">
+          {{time}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Duration To Take</label>
+        <select class="form-control" formControlName="duration">
+          <option *ngFor="let duration of durationToTake" 
+          [value]="duration">
+          {{duration}}</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Directions</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Notes To Patient</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <p>For Pharmacy</p>
+        <label for="exampleFormControlTextarea1">Quantity</label>
+        <input type="text" class="form-control" formControlName="drugQuantity">
+      </div>
+
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Refills</label>
+        <select class="form-control" formControlName="refill">
+          <option *ngFor="let refill of refills" 
+          [value]="refill">
+          {{refill}}</option>
+        </select>
+      </div>
+
+
     </div>
+    
     <button *ngIf="strengths.length > 0" type="submit" class="btn btn-primary">Prescribe</button>
     <button (click)="goBack()" class="btn btn-secondary">Back</button>
   </form>
