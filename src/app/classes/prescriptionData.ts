@@ -1,5 +1,4 @@
 export class PrescriptionData {
-  directions: string;
   patientNotes: string;
   quantityOfMed: string;
 }

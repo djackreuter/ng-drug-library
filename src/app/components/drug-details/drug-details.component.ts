@@ -3,7 +3,6 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DrugService } from '../../services/drug/drug.service';
 import { NdcProduct } from '../../classes/NdcProduct';
-// import { PrescriptionData } from '../../classes/prescriptionData';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { quantityToTake, frequency, timeOfDay, durationToTake, refills } from '../../classes/prescriptionData';
 
@@ -26,7 +25,6 @@ export class DrugDetailsComponent implements OnInit {
   selectedDoseForm: string;
   dosageStrength: any;
   strengths: string[] = [];
-  // scripData: PrescriptionData = new PrescriptionData;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
