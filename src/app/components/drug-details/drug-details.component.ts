@@ -22,9 +22,6 @@ export class DrugDetailsComponent implements OnInit {
 
   drugName: string = this.route.snapshot.paramMap.get('name');
   drugs: NdcProduct;
-  selectedDoseForm: string;
-  dosageStrength: any;
-  strengths: string[] = [];
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -38,8 +35,6 @@ export class DrugDetailsComponent implements OnInit {
 
   createForm(): void {
     this.prescriptionForm = this.fb.group({
-      drug: ['', Validators.required],
-      strength: ['', Validators.required],
       quantityToTake: ['', Validators.required],
       frequency: ['', Validators.required],
       time: ['', Validators.required],
@@ -53,17 +48,6 @@ export class DrugDetailsComponent implements OnInit {
   getDrug(): void {
     this.drugService.getDrug(this.drugName).subscribe((res) => {
       this.drugs = res;
-    });
-  }
-
-  selectDoseForm(doseFormName: string): void {
-    this.selectedDoseForm = doseFormName;
-    this.drugService.getDosage(this.drugName, this.selectedDoseForm).subscribe((res) => {
-      this.strengths = [];
-      this.dosageStrength = res;
-      for(let i = 0; i < this.dosageStrength.length; i++) {
-        this.strengths.push(this.dosageStrength[i].join(' '));
-      }
     });
   }
 
