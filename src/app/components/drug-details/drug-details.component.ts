@@ -14,12 +14,15 @@ import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../clas
 })
 export class DrugDetailsComponent implements OnInit {
   prescriptionForm: FormGroup;
-  quantityToTake: string[] = quantityToTake;
-  frequency: string[] = frequency;
+  quantityToTake: number[] = quantityToTake;
+  frequency: number[] = frequency;
   timeOfDay: string[] = timeOfDay;
-  durationToTake: string[] = durationToTake;
+  durationToTake: number[] = durationToTake;
   
   drug: NdcProduct;
+  pillQuantity: number;
+  // medFrequency: number;
+  // durationDays: number;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -29,6 +32,16 @@ export class DrugDetailsComponent implements OnInit {
   ngOnInit() {
     this.getDrug();
     this.createForm();
+    this.pillQuantity = 0;
+  }
+
+  changePillQuantity(): void {
+    let quantity = this.prescriptionForm.get('quantityToTake').value;
+    let frequency = this.prescriptionForm.get('frequency').value;
+    let duration = this.prescriptionForm.get('duration').value;
+    if(quantity !== null && frequency !== null && duration !== null) {
+      this.pillQuantity = quantity * frequency * duration;
+    }
   }
 
   createForm(): void {
@@ -38,9 +51,10 @@ export class DrugDetailsComponent implements OnInit {
       time: ['', Validators.required],
       duration: ['', Validators.required],
       notes: '',
-      drugQuantity: ['', Validators.required],
+      drugQuantity: '',
       refill: ['', Validators.required]
     });
+
   }
 
   getDrug(): void {
