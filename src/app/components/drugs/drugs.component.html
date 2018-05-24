@@ -24,7 +24,7 @@
     <div *ngIf="drugs">
       <ul>
         <li *ngFor="let drug of drugs">
-          <a routerLink="/drugs/{{drug.proprietary_name}}">
+          <a routerLink="/drugs/{{drug.product_id}}">
             {{drug.proprietary_name}}
           </a>
           <strong> Dose Form: </strong>{{drug.dosage_form_name}},

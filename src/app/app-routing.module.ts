@@ -7,7 +7,7 @@ import { DrugDetailsComponent } from './components/drug-details/drug-details.com
 const routes: Routes = [
   { path: '', redirectTo: '/drugs', pathMatch: 'full' },
   { path: 'drugs', component: DrugsComponent },
-  { path: 'drugs/:name', component: DrugDetailsComponent }
+  { path: 'drugs/:id', component: DrugDetailsComponent }
 ];
 
 @NgModule({

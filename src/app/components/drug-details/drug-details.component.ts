@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { DrugService } from '../../services/drug/drug.service';
 import { NdcProduct } from '../../classes/NdcProduct';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { quantityToTake, frequency, timeOfDay, durationToTake, refills } from '../../classes/prescriptionData';
+import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/prescriptionData';
 
 
 @Component({
@@ -18,10 +18,8 @@ export class DrugDetailsComponent implements OnInit {
   frequency: string[] = frequency;
   timeOfDay: string[] = timeOfDay;
   durationToTake: string[] = durationToTake;
-  refills: string[] = refills;
-
-  drugName: string = this.route.snapshot.paramMap.get('name');
-  drugs: NdcProduct;
+  
+  drug: NdcProduct;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -42,12 +40,13 @@ export class DrugDetailsComponent implements OnInit {
       notes: '',
       drugQuantity: ['', Validators.required],
       refill: ['', Validators.required]
-    })
+    });
   }
 
   getDrug(): void {
-    this.drugService.getDrug(this.drugName).subscribe((res) => {
-      this.drugs = res;
+    const drugId: string = this.route.snapshot.paramMap.get('id');
+    this.drugService.getDrug(drugId).subscribe((res) => {
+      this.drug = res;
     });
   }
 
