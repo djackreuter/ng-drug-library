@@ -2,9 +2,9 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { DrugService } from '../../services/drug/drug.service';
-import { NdcProduct } from '../../classes/NdcProduct';
+import { NdcProduct } from '../../classes/ndc-product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/formData';
+import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/form-data';
 
 
 @Component({
