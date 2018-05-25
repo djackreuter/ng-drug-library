@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { DrugService } from '../../services/drug/drug.service';
 import { NdcProduct } from '../../classes/NdcProduct';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/prescriptionData';
+import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/formData';
 
 
 @Component({
@@ -21,8 +21,6 @@ export class DrugDetailsComponent implements OnInit {
   
   drug: NdcProduct;
   pillQuantity: number;
-  // medFrequency: number;
-  // durationDays: number;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -50,6 +48,7 @@ export class DrugDetailsComponent implements OnInit {
       frequency: ['', Validators.required],
       time: ['', Validators.required],
       duration: ['', Validators.required],
+      asNeeded: false,
       notes: '',
       drugQuantity: '',
       refill: ['', Validators.required]
