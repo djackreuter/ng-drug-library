@@ -54,19 +54,26 @@
             </option>
           </select>
         </div>
-  
+      </div>
+
+      <div class="form-row">
+        <div class="form-check form-group">
+          <input class="form-check-input" type="checkbox" formControlName="asNeeded" value="1">
+          <label class="form-check-label" for="defaultCheck1">
+            As Needed
+          </label>
+        </div>
       </div>
       
       <div class="form-row">
         <div class="form-group col-lg-12">
           <label for="exampleFormControlTextarea1">Notes To Patient</label>
-          <textarea formControlName="notes" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <textarea formControlName="notes" class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="500 characters max"></textarea>
         </div>
       </div>
      
       <div class="form-row">
         <div class="form-group col-lg-2">
-          <p>For Pharmacy</p>
           <label for="exampleFormControlTextarea1">Quantity</label>
           <input type="text" class="form-control" formControlName="drugQuantity" value="{{pillQuantity}}" 
           placeholder="{{pillQuantity}}" readonly>
@@ -74,7 +81,7 @@
       </div>
 
       <div class="form-group">
-        <p>Refills</p>
+        <p><span class="requiredAstrix">* </span>Refills</p>
         <div class="form-check form-check-inline">
           <input class="form-check-input" type="radio" formControlName="refill" value="0">
           <label class="form-check-label">0</label>
@@ -102,7 +109,7 @@
       </div>
 
       <div class="from-row">
-        <button type="submit" class="btn btn-primary">Prescribe</button>
+        <button type="submit" [disabled]="prescriptionForm.invalid" class="btn btn-primary">Prescribe</button>
         <button (click)="goBack()" class="btn btn-secondary">Back</button>
       </div>
     </form>

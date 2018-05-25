@@ -3,8 +3,7 @@
   box-shadow: 0 0 0.6rem gray;
 }
 
-.required::after {
-  content: " *";
+.requiredAstrix {
   color: red;
 }
 
