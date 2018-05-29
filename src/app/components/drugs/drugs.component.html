@@ -4,11 +4,11 @@
   </div>
 </div>
 
-<div class="row mt-1">
+<div class="row mt-1 drug-searchbox">
   <div class="col-lg-12">
     <form (ngSubmit)="onSearch()">
       <div class="form-group row justify-content-center">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
           <input class="form-control" 
           (input)="dynamicSearchValue.next($event.target.value)" type="text" placeholder="Drug name...">
         </div>
@@ -20,14 +20,20 @@
   </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="selectedDrug">
   <div class="col-lg-8">
-    <div *ngIf="drugs">
+    <app-drug-details [drug]="selectedDrug"></app-drug-details>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="drug-dropdown-menu" *ngIf="drugs">
       <ul>
-        <li *ngFor="let drug of drugs">
-          <a routerLink="/drugs/{{drug.product_id}}">
-            {{drug.proprietary_name}}
-          </a>
+        <li *ngFor="let drug of drugs"
+        [class.selected]="drug === selectedDrug"
+        (click)="chooseDrug(drug)">
+          <button class="btn btn-link" type="button">{{drug.proprietary_name}}</button>
           <strong> Dose Form: </strong>{{drug.dosage_form_name}},
           <strong>Strength: </strong>{{drug.active_numerator_strength}}
           {{drug.active_ingred_unit}}

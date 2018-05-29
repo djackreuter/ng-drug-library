@@ -13,21 +13,29 @@ export class DrugsComponent implements OnInit {
   isLoading: boolean = false;
   dynamicSearchValue: Subject<string> = new Subject();
   drugs: NdcProduct[];
+  selectedDrug: NdcProduct;
 
   constructor(private drugService: DrugService) { }
 
   ngOnInit() {
     this.dynamicSearchValue
-      .debounceTime(1500)
+      .debounceTime(500)
       .subscribe((searchQuery) => this.getDrugs(searchQuery));
   }
 
   getDrugs(searchQuery: string): void {
-    this.isLoading = true;
-    this.drugService.searchDrugs(searchQuery).subscribe((res) => {
-      this.drugs = res;
-      this.isLoading = false;
-    });
-  } 
+    if(searchQuery !== '') {
+      this.isLoading = true;
+      this.drugService.searchDrugs(searchQuery).subscribe((res) => {
+        this.drugs = res;
+        this.isLoading = false;
+      });
+    }
+  }
+  
+  chooseDrug(drug: NdcProduct): void {
+    this.selectedDrug = drug;
+    this.drugs = [];
+  }
 
 }
