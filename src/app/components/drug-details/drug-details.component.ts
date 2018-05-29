@@ -19,7 +19,7 @@ export class DrugDetailsComponent implements OnInit {
   timeOfDay: string[] = timeOfDay;
   durationToTake: number[] = durationToTake;
   
-  drug: NdcProduct;
+  @Input() drug: NdcProduct;
   pillQuantity: number;
 
   constructor(private route: ActivatedRoute,
@@ -28,7 +28,7 @@ export class DrugDetailsComponent implements OnInit {
               private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.getDrug();
+    // this.getDrug();
     this.createForm();
     this.pillQuantity = 0;
   }
