@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DrugService } from '../../services/drug/drug.service';
-import { NdcProduct } from '../../classes/NdcProduct';
+import { NdcProduct } from '../../classes/ndc-product';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'app-drugs',
@@ -9,22 +10,21 @@ import { NdcProduct } from '../../classes/NdcProduct';
 })
 export class DrugsComponent implements OnInit {
 
-  searchQuery: string;
+  dynamicSearchValue: Subject<string> = new Subject();
   drugs: NdcProduct[];
 
   constructor(private drugService: DrugService) { }
 
   ngOnInit() {
+    this.dynamicSearchValue
+      .debounceTime(1500)
+      .subscribe((searchQuery) => this.getDrugs(searchQuery));
   }
 
-  getDrugs(): void {
-    this.drugService.searchDrugs(this.searchQuery).subscribe((res) => {
+  getDrugs(searchQuery: string): void {
+    this.drugService.searchDrugs(searchQuery).subscribe((res) => {
       this.drugs = res;
     });
-  }
-
-  onSearch(): void {
-    this.getDrugs();
-  }
+  } 
 
 }
