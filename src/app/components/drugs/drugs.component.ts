@@ -10,6 +10,7 @@ import { Subject } from 'rxjs/Subject';
 })
 export class DrugsComponent implements OnInit {
 
+  isLoading: boolean = false;
   dynamicSearchValue: Subject<string> = new Subject();
   drugs: NdcProduct[];
 
@@ -22,8 +23,10 @@ export class DrugsComponent implements OnInit {
   }
 
   getDrugs(searchQuery: string): void {
+    this.isLoading = true;
     this.drugService.searchDrugs(searchQuery).subscribe((res) => {
       this.drugs = res;
+      this.isLoading = false;
     });
   } 
 
