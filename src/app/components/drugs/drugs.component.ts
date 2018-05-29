@@ -20,7 +20,10 @@ export class DrugsComponent implements OnInit {
   ngOnInit() {
     this.dynamicSearchValue
       .debounceTime(500)
-      .subscribe((searchQuery) => this.getDrugs(searchQuery));
+      .subscribe((searchQuery) => {
+        this.selectedDrug = null;
+        this.getDrugs(searchQuery)
+      });
   }
 
   getDrugs(searchQuery: string): void {
