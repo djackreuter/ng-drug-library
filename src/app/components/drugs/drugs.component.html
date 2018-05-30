@@ -12,7 +12,7 @@
           <input class="form-control" 
           (input)="dynamicSearchValue.next($event.target.value)" type="text" placeholder="Drug name...">
         </div>
-        <div *ngIf="isLoading" class="col-lg-2">
+        <div *ngIf="isLoading" class="col-lg-1">
           <fa-icon [icon]="['fas', 'spinner']" [spin]="true" size="lg"></fa-icon>
         </div>
       </div>
