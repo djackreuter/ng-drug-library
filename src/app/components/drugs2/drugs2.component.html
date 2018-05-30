@@ -1,3 +1,21 @@
-<p>
-  drugs2 works!
-</p>
+<div class="row justify-content-center mt-3">
+  <div class="col-lg-4 text-center">
+    <h3>Search Drugs</h3>
+  </div>
+</div>
+  
+<div class="row mt-1 drug-searchbox">
+  <div class="col-lg-12">
+    <form (ngSubmit)="onSearch()">
+      <div class="form-group row justify-content-center">
+        <div class="col-lg-8">
+          <input class="form-control" 
+          (input)="dynamicSearchValue.next($event.target.value)" type="text" placeholder="Drug name...">
+        </div>
+        <div *ngIf="isLoading" class="col-lg-1">
+          <fa-icon [icon]="['fas', 'spinner']" [spin]="true" size="lg"></fa-icon>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

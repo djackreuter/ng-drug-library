@@ -15,6 +15,10 @@ export class DrugService {
     return this.http.get<NdcProduct[]>(this.drugUrl + searchQuery);
   }
 
+  searchDrugs2(drugName: string): Observable<NdcProduct[]> {
+    return this.http.get<NdcProduct[]>(`http://localhost:3000/drugs/query_distinct?search=${drugName}`);
+  }
+
   // getDrug(id: string): Observable<NdcProduct> {
   //   return this.http.get<NdcProduct>(this.drugInfoUrl + id);
   // }
