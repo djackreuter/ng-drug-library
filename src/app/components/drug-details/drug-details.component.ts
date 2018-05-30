@@ -28,7 +28,6 @@ export class DrugDetailsComponent implements OnInit {
               private fb: FormBuilder) { }
 
   ngOnInit() {
-    // this.getDrug();
     this.createForm();
     this.pillQuantity = 0;
   }
@@ -55,13 +54,6 @@ export class DrugDetailsComponent implements OnInit {
     });
 
   }
-
-  // getDrug(): void {
-  //   const drugId: string = this.route.snapshot.paramMap.get('id');
-  //   this.drugService.getDrug(drugId).subscribe((res) => {
-  //     this.drug = res;
-  //   });
-  // }
 
   goBack(): void {
     this.location.back();
