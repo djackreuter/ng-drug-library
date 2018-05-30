@@ -13,6 +13,7 @@ import { DrugDetailsComponent } from './components/drug-details/drug-details.com
 import { AppRoutingModule } from './/app-routing.module';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { Drugs2Component } from './components/drugs2/drugs2.component';
 
 library.add(faSpinner);
 
@@ -20,7 +21,8 @@ library.add(faSpinner);
   declarations: [
     AppComponent,
     DrugsComponent,
-    DrugDetailsComponent
+    DrugDetailsComponent,
+    Drugs2Component
   ],
   imports: [
     BrowserModule,
