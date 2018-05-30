@@ -1,6 +1,6 @@
 <div class="row justify-content-center mt-3">
   <div class="col-lg-4 text-center">
-    <h3>Search Drugs</h3>
+    <h3>Search Drugs <em>(Picker 2)</em></h3>
   </div>
 </div>
   
@@ -17,5 +17,25 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
+
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="drug-dropdown-menu" *ngIf="drugs2">
+      <ul>
+        <li *ngFor="let drug of drugs2"
+        [class.selected]="drug === selectedDrugInfo"
+        (click)="getDrugInfo(drug)">
+          <button class="btn btn-link" type="button">{{drug.proprietary_name}}</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+  
+<div class="row">
+  <div class="col-lg-2">
+    <button class="btn btn-outline-success" routerLink="/drugs">Picker 1</button>
   </div>
 </div>
