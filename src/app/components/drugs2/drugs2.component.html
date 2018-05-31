@@ -26,7 +26,7 @@
       <ul>
         <li *ngFor="let drug of drugs2"
         [class.selected]="drug === selectedDrugInfo"
-        (click)="getDrugInfo(drug)">
+        (click)="getDrugInfo(drug.proprietary_name)">
           <button class="btn btn-link" type="button">{{drug.proprietary_name}}</button>
         </li>
       </ul>

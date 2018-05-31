@@ -14,6 +14,7 @@ import { AppRoutingModule } from './/app-routing.module';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { Drugs2Component } from './components/drugs2/drugs2.component';
+import { DrugDetails2Component } from './components/drug-details2/drug-details2.component';
 
 library.add(faSpinner);
 
@@ -22,7 +23,8 @@ library.add(faSpinner);
     AppComponent,
     DrugsComponent,
     DrugDetailsComponent,
-    Drugs2Component
+    Drugs2Component,
+    DrugDetails2Component
   ],
   imports: [
     BrowserModule,
