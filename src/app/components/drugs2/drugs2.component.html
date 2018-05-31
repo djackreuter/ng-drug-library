@@ -6,11 +6,12 @@
   
 <div class="row mt-1 drug-searchbox">
   <div class="col-lg-12">
-    <form (ngSubmit)="onSearch()">
+    <form>
       <div class="form-group row justify-content-center">
         <div class="col-lg-8">
           <input class="form-control" 
-          (input)="dynamicSearchValue.next($event.target.value)" type="text" placeholder="Drug name...">
+          (input)="dynamicSearchValue.next($event.target.value)" 
+          (click)="resetInput()" type="text" placeholder="Drug name...">
         </div>
         <div *ngIf="isLoading" class="col-lg-1">
           <fa-icon [icon]="['fas', 'spinner']" [spin]="true" size="lg"></fa-icon>
@@ -25,7 +26,8 @@
     <div class="drug-dropdown-menu" *ngIf="drugs2">
       <ul>
         <li *ngFor="let drug of drugs2"
-        (click)="getDrugInfo(drug.proprietary_name)">
+        (click)="getDrugInfo(drug.proprietary_name)"
+        [class.hideDropdown]="drugClicked">
           <button class="btn btn-link" type="button">{{drug.proprietary_name}}</button>
         </li>
       </ul>

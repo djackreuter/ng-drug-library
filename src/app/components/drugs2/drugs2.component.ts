@@ -13,6 +13,7 @@ export class Drugs2Component implements OnInit {
   dynamicSearchValue: Subject<string> = new Subject();
   drugs2: NdcProduct[];
   selectedDrugInfo: NdcProduct[];
+  drugClicked: boolean;
 
   constructor(private drugService: DrugService) { }
 
@@ -35,6 +36,11 @@ export class Drugs2Component implements OnInit {
     this.drugService.searchDrugs(drug).subscribe((res) => {
       this.selectedDrugInfo = res;
     });
+    this.drugClicked = true;
+  }
+
+  resetInput(): void {
+    this.drugClicked = false;
   }
 
 }
