@@ -1,0 +1,41 @@
+ul {
+  list-style: none;
+  margin-left: -2.5rem;
+  margin-bottom: 0
+}
+
+li {
+  border-bottom: 2px solid black;
+  color: #ebebeb;
+}
+
+li:hover {
+  background-color: steelblue;
+  cursor: pointer;
+}
+
+.drug-name {
+  color: #418ad8;
+  cursor: pointer;
+}
+
+.drug-name:hover {
+  text-decoration: underline;
+}
+
+.drug-searchbox {
+  margin-bottom: -1rem;
+}
+
+.drug-dropdown-menu {
+  background-color: slategray;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  z-index: 1000;
+  position: absolute;
+  width: 96%;
+}
+
+.btn-link {
+  color: lime;
+}
