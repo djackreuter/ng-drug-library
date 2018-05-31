@@ -6,7 +6,7 @@ import { DrugService } from '../../services/drug/drug.service';
 @Component({
   selector: 'app-drugs2',
   templateUrl: './drugs2.component.html',
-  styleUrls: ['../drugs/drugs.component.css']
+  styleUrls: ['./drugs2.component.css']
 })
 export class Drugs2Component implements OnInit {
 
@@ -31,7 +31,7 @@ export class Drugs2Component implements OnInit {
     }
   }
 
-  getDrugInfo(drug: string): void {
+  getDrugInfo(drug: any): void {
     this.drugService.searchDrugs(drug).subscribe((res) => {
       this.selectedDrugInfo = res;
     });

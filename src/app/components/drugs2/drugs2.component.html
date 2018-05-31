@@ -25,7 +25,6 @@
     <div class="drug-dropdown-menu" *ngIf="drugs2">
       <ul>
         <li *ngFor="let drug of drugs2"
-        [class.selected]="drug === selectedDrugInfo"
         (click)="getDrugInfo(drug.proprietary_name)">
           <button class="btn btn-link" type="button">{{drug.proprietary_name}}</button>
         </li>
@@ -35,7 +34,7 @@
 </div>
 
 <div>
-  <app-drug-details2></app-drug-details2>
+  <app-drug-details2 [drugOptions]="selectedDrugInfo"></app-drug-details2>
 </div>
   
 <div class="row">
