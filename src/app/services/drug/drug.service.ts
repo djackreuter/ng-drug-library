@@ -9,7 +9,7 @@ export class DrugService {
   constructor(private http: HttpClient) { }
 
   drugUrl = 'http://localhost:3000/drugs/query?search=';
-  // drugInfoUrl = 'http://localhost:3000/drugs/specific_drug/';
+  drugInfoUrl = 'http://localhost:3000/drugs/specific_drug/';
 
   searchDrugs(searchQuery: string): Observable<NdcProduct[]> {
     return this.http.get<NdcProduct[]>(this.drugUrl + searchQuery);
@@ -19,8 +19,12 @@ export class DrugService {
     return this.http.get<NdcProduct[]>(`http://localhost:3000/drugs/query_distinct?search=${drugName}`);
   }
 
-  // getDrug(id: string): Observable<NdcProduct> {
-  //   return this.http.get<NdcProduct>(this.drugInfoUrl + id);
-  // }
+  getDrug(name: string): Observable<NdcProduct[]> {
+    return this.http.get<NdcProduct[]>(this.drugInfoUrl + name);
+  }
+
+  getDosage(drug: string, doseForm: string): Observable<NdcProduct> {
+    return this.http.get<NdcProduct>(`http://localhost:3000/drugs/strength?search=${drug}&dose_form=${doseForm}`);
+  }
 
 }
