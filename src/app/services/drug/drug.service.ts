@@ -27,4 +27,8 @@ export class DrugService {
     return this.http.get<NdcProduct>(`http://localhost:3000/drugs/strength?search=${drug}&dose_form=${doseForm}`);
   }
 
+  getDrugInfo(drugName: string): Observable<object> {
+    return this.http.get<object>(`http://localhost:3000/drugs/drug_info?search=${drugName}`);
+  }
+
 }
