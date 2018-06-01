@@ -27,19 +27,9 @@ export class DrugDetails2Component implements OnInit {
               private drugService: DrugService) { }
 
   ngOnInit() {
-    // this.getDrugDoseOptions();
     this.drugInfo = [];
     this.createForm();
     this.pillQuantity = 0;
-  }
-
-  getDrugDoseOptions(): void {
-    // console.log(this.drugs[0].proprietary_name);
-    // let drugName = this.drugInfo[0];
-    // this.drugService.getDrug(drugName).subscribe((res) => {
-    //   this.doseOptions = res;
-    //   console.log(this.drugInfo);
-    // });
   }
 
   changePillQuantity(): void {
@@ -67,8 +57,6 @@ export class DrugDetails2Component implements OnInit {
   }
 
   selectDoseStrength(drugName: string, drugDose: string): void {
-    // this.selectedDoseForm = drugDose;
-    // this.drugName = drugName;
     this.drugService.getDosage(drugName, drugDose)
     .subscribe((res) => {
       this.strengths = [];

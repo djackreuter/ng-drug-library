@@ -1,7 +1,7 @@
 <div class="card card-style mt-4 p-3">
     <div class="row">
       <div class="col-lg-12">
-        <h3>{{drugInfo}}</h3>
+        <h3>{{drugInfo.drug_name}}</h3>
       </div>
     </div>
     <form [formGroup]="prescriptionForm2">
@@ -20,9 +20,9 @@
         <div class="form-group col-lg-2">
           <label>Dose Form</label>
           <select class="form-control" formControlName="doseForm">
-            <option *ngFor="let drug of drugInfo" 
-            (click)="selectDoseStrength(drug.proprietary_name, drug.dosage_form_name)"
-            [value]="drug.dosage_form_name">{{drug.dosage_form_name}}</option>
+            <option *ngFor="let dose of drugInfo.dose_form" 
+            (click)="selectDoseStrength(drugInfo.drug_name, dose)"
+            [value]="dose">{{dose}}</option>
           </select>
         </div>
 

@@ -35,7 +35,6 @@ export class Drugs2Component implements OnInit {
   getDrugInfo(drugName: string): void {
     this.drugService.getDrugInfo(drugName).subscribe((res) => {
       this.selectedDrug = res;
-      console.log(this.selectedDrug);
     });
     this.drugClicked = true;
   }
