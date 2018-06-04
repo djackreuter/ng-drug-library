@@ -22,6 +22,7 @@ export class DrugDetails2Component implements OnInit {
   strengths: string[] = [];
   dosageStrength: any;
   isDisabled: boolean;
+  ndcCode: NdcProduct;
 
   constructor(private fb: FormBuilder,
               private drugService: DrugService) { }
@@ -49,7 +50,16 @@ export class DrugDetails2Component implements OnInit {
   }
 
   getNdcCode(): void {
-    
+    let name = this.drugInfo.drug_name;
+    let doseForm = this.prescriptionForm2.get('doseForm').value;
+    let strength = this.prescriptionForm2.get('strength').value;
+    let strengthNum = strength.split(' ');
+    if(name !== null && doseForm !== null && strengthNum[0] !== null) {
+      console.log(name, doseForm, strengthNum[0]);
+      this.drugService.getNdcCode(name, doseForm, strengthNum[0]).subscribe((res) => {
+        this.ndcCode = res;
+      });
+    }
   }
 
   createForm(): void {

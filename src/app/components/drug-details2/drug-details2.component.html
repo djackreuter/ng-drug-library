@@ -20,7 +20,8 @@
     
           <div class="form-group col-lg-2">
             <label>Dose Form</label>
-            <select class="form-control" formControlName="doseForm">
+            <select class="form-control" formControlName="doseForm"
+            (change)="getNdcCode()">
               <option *ngFor="let dose of drugInfo.dose_form" 
               (click)="selectDoseStrength(drugInfo.drug_name, dose)"
               [value]="dose">{{dose}}</option>
@@ -29,7 +30,8 @@
 
           <div class="form-group col-lg-2">
             <label>Strength</label>
-            <select class="form-control" formControlName="strength">
+            <select class="form-control" formControlName="strength"
+            (change)="getNdcCode()">
               <option *ngFor="let strength of strengths" 
               [value]="strength">
                 {{strength}}
