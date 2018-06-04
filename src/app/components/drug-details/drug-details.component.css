@@ -14,3 +14,8 @@
 h3, label, p {
   color: #ebebeb;
 }
+
+.disabled-form {
+  pointer-events: none;
+  opacity: 0.5;
+}
