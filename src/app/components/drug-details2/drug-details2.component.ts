@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { NdcProduct } from '../../classes/ndc-product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/form-data';
@@ -22,6 +22,7 @@ export class DrugDetails2Component implements OnInit {
   selectedDoseForm: string;
   dosageStrength: any;
   doseOptions: NdcProduct[];
+  isDisabled: boolean;
 
   constructor(private fb: FormBuilder,
               private drugService: DrugService) { }
@@ -30,6 +31,19 @@ export class DrugDetails2Component implements OnInit {
     this.drugInfo = [];
     this.createForm();
     this.pillQuantity = 0;
+    this.isDisabled = true;
+    console.log(this.isDisabled);
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if(!changes.firstChange && changes.drugInfo.currentValue !== undefined) {
+      this.isDisabled = false;
+      console.log(this.isDisabled);
+    }
+    // for(let propName in changes) {
+    //   let change = changes[propName];
+    //   console.log(changes);
+    // }
   }
 
   changePillQuantity(): void {
