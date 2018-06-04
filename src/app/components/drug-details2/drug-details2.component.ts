@@ -3,6 +3,7 @@ import { NdcProduct } from '../../classes/ndc-product';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { quantityToTake, frequency, timeOfDay, durationToTake } from '../../classes/form-data';
 import { DrugService } from '../../services/drug/drug.service';
+import { DrugInfo } from '../../classes/drug-info';
 
 @Component({
   selector: 'app-drug-details2',
@@ -11,7 +12,7 @@ import { DrugService } from '../../services/drug/drug.service';
 })
 export class DrugDetails2Component implements OnInit {
 
-  @Input() drugInfo: object[];
+  @Input() drugInfo: DrugInfo;
   prescriptionForm2: FormGroup;
   quantityToTake: number[] = quantityToTake;
   frequency: number[] = frequency;
@@ -26,7 +27,7 @@ export class DrugDetails2Component implements OnInit {
               private drugService: DrugService) { }
 
   ngOnInit() {
-    this.drugInfo = [];
+    this.drugInfo = new DrugInfo(null, null);
     this.createForm();
     this.pillQuantity = 0;
     this.isDisabled = true;
@@ -45,6 +46,10 @@ export class DrugDetails2Component implements OnInit {
     if(quantity !== null && frequency !== null && duration !== null) {
       this.pillQuantity = quantity * frequency * duration;
     }
+  }
+
+  getNdcCode(): void {
+    
   }
 
   createForm(): void {

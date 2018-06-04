@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { NdcProduct } from '../../classes/ndc-product';
+import { DrugInfo } from '../../classes/drug-info';
 
 @Injectable()
 export class DrugService {
@@ -27,8 +28,8 @@ export class DrugService {
     return this.http.get<NdcProduct>(`http://localhost:3000/drugs/strength?search=${drug}&dose_form=${doseForm}`);
   }
 
-  getDrugInfo(drugName: string): Observable<object> {
-    return this.http.get<object>(`http://localhost:3000/drugs/drug_info?search=${drugName}`);
+  getDrugInfo(drugName: string): Observable<DrugInfo> {
+    return this.http.get<DrugInfo>(`http://localhost:3000/drugs/drug_info?search=${drugName}`);
   }
 
 }

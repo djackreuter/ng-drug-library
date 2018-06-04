@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { NdcProduct } from '../../classes/ndc-product';
+import { DrugInfo } from '../../classes/drug-info';
 import { DrugService } from '../../services/drug/drug.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class Drugs2Component implements OnInit {
 
   dynamicSearchValue: Subject<string> = new Subject();
   drugs2: NdcProduct[];
-  selectedDrug: object;
+  selectedDrug: DrugInfo;
   drugClicked: boolean;
 
   constructor(private drugService: DrugService) { }
