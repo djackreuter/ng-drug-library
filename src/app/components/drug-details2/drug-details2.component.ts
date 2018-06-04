@@ -30,7 +30,6 @@ export class DrugDetails2Component implements OnInit {
     this.createForm();
     this.pillQuantity = 0;
     this.isDisabled = true;
-    console.log(this.isDisabled);
   }
 
   ngOnChanges(changes: SimpleChanges) {

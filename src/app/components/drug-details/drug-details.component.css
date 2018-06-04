@@ -15,7 +15,6 @@ h3, label, p {
   color: #ebebeb;
 }
 
-.disabled-form {
-  pointer-events: none;
+.disabled-form:disabled {
   opacity: 0.5;
 }
