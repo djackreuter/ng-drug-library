@@ -19,9 +19,7 @@ export class DrugDetails2Component implements OnInit {
   durationToTake: number[] = durationToTake;
   pillQuantity: number;
   strengths: string[] = [];
-  selectedDoseForm: string;
   dosageStrength: any;
-  doseOptions: NdcProduct[];
   isDisabled: boolean;
 
   constructor(private fb: FormBuilder,
@@ -38,12 +36,7 @@ export class DrugDetails2Component implements OnInit {
   ngOnChanges(changes: SimpleChanges) {
     if(!changes.firstChange && changes.drugInfo.currentValue !== undefined) {
       this.isDisabled = false;
-      console.log(this.isDisabled);
     }
-    // for(let propName in changes) {
-    //   let change = changes[propName];
-    //   console.log(changes);
-    // }
   }
 
   changePillQuantity(): void {
