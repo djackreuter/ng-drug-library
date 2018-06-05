@@ -22,7 +22,7 @@ export class DrugDetails2Component implements OnInit {
   strengths: string[] = [];
   dosageStrength: any;
   isDisabled: boolean;
-  ndcCode: NdcProduct;
+  ndcCode: string;
 
   constructor(private fb: FormBuilder,
               private drugService: DrugService) { }
@@ -55,9 +55,9 @@ export class DrugDetails2Component implements OnInit {
     let strength = this.prescriptionForm2.get('strength').value;
     let strengthNum = strength.split(' ');
     if(name !== null && doseForm !== null && strengthNum[0] !== null) {
-      console.log(name, doseForm, strengthNum[0]);
       this.drugService.getNdcCode(name, doseForm, strengthNum[0]).subscribe((res) => {
-        this.ndcCode = res;
+        let productNdc = res
+        this.ndcCode = productNdc.ndc_code;
       });
     }
   }
@@ -73,6 +73,7 @@ export class DrugDetails2Component implements OnInit {
       asNeeded: false,
       notes: '',
       drugQuantity: '',
+      ndcCode: '',
       refill: ['', Validators.required]
     });
   }

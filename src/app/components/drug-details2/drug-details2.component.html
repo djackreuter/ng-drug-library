@@ -94,6 +94,12 @@
             <input type="text" class="form-control" formControlName="drugQuantity"
             placeholder="{{pillQuantity}}" [(ngModel)]="pillQuantity" readonly>
           </div>
+
+          <div class="form-group col-lg-2">
+            <label for="exampleFormControlTextarea1">NDC Code</label>
+            <input type="text" class="form-control" formControlName="ndcCode"
+            placeholder="{{ndcCode}}" [(ngModel)]="ndcCode" readonly>
+          </div>
         </div>
     
         <div class="form-group">
@@ -130,5 +136,5 @@
       </fieldset>
     </form>
   </div>
-  <div>{{ prescriptionForm2.value | json }}</div>
+  <!-- <div>{{ prescriptionForm2.value | json }}</div> -->
   

@@ -21,6 +21,7 @@ export class DrugDetailsComponent implements OnInit {
   
   @Input() drug: NdcProduct;
   pillQuantity: number;
+  ndcCode: string;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -30,6 +31,7 @@ export class DrugDetailsComponent implements OnInit {
   ngOnInit() {
     this.createForm();
     this.pillQuantity = 0;
+    this.ndcCode = this.drug.product_ndc;
   }
 
   changePillQuantity(): void {
@@ -50,6 +52,7 @@ export class DrugDetailsComponent implements OnInit {
       asNeeded: false,
       notes: '',
       drugQuantity: '',
+      ndcCode: '',
       refill: ['', Validators.required]
     });
 

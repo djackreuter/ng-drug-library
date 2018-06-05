@@ -32,8 +32,8 @@ export class DrugService {
     return this.http.get<DrugInfo>(`http://localhost:3000/drugs/drug_info?search=${drugName}`);
   }
 
-  getNdcCode(name: string, doseForm: string, strength: string): Observable<NdcProduct> {
-    return this.http.get<NdcProduct>(`http://localhost:3000/drugs/ndc_number?name=${name}&dose_form=${doseForm}&strength=${strength}`);
+  getNdcCode(name: string, doseForm: string, strength: string): Observable<any> {
+    return this.http.get<any>(`http://localhost:3000/drugs/ndc_number?name=${name}&dose_form=${doseForm}&strength=${strength}`);
   }
 
 }
