@@ -53,12 +53,13 @@ export class DrugDetails2Component implements OnInit {
     let name = this.drugInfo.drug_name;
     let doseForm = this.prescriptionForm2.get('doseForm').value;
     let strength = this.prescriptionForm2.get('strength').value;
-    let strengthNum = strength.split(' ');
-    if(name !== null && doseForm !== null && strengthNum[0] !== null) {
-      this.drugService.getNdcCode(name, doseForm, strengthNum[0]).subscribe((res) => {
-        let productNdc = res
-        this.ndcCode = productNdc.ndc_code;
-      });
+    let strengthNum = strength.split(' ')[0];
+    if(name !== null && doseForm !== null && strengthNum !== null) {
+      this.drugService.getNdcCode(name, doseForm, strengthNum)
+        .subscribe((res) => {
+          let productNdc = res
+          this.ndcCode = productNdc.ndc_code;
+        });
     }
   }
 
